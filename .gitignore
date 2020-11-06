@@ -1,3 +1,7 @@
 .fake
 .ionide
 paket-files
+packages
+
+[Bb]in/
+[Oo]bj/

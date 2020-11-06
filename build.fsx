@@ -1,14 +1,10 @@
-#r "paket:
-nuget Fake.Core.Target
-nuget FSharp.Core 4.7
-//"
 // include Fake modules, see Fake modules section
 
 open Fake.Core
 
 // *** Define Targets ***
 Target.create "Clean" (fun _ ->
-  Trace.log " --- Cleaning stuff --- "
+  Trace.log " --- Cleaning the app --- "
 )
 
 Target.create "Build" (fun _ ->

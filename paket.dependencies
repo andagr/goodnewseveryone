@@ -1,5 +1,7 @@
 storage: none
 source https://api.nuget.org/v3/index.json
+version 5.249.0
+framework: netcoreapp3.1
 
 nuget FSharp.Core ~> 5.0
 nuget Giraffe
@@ -7,3 +9,12 @@ nuget Microsoft.NET.Test.Sdk
 nuget Microsoft.AspNetCore.TestHost
 nuget xunit
 nuget xunit.runner.visualstudio
+
+// [ FAKE GROUP ]
+group Build
+    source https://api.nuget.org/v3/index.json
+    framework: netstandard2.0
+
+    nuget FSharp.Core 4.7
+    nuget Fake.Core.Target
+    nuget Fake.DotNet.Cli
