@@ -1,26 +1,31 @@
 // include Fake modules, see Fake modules section
 
 open Fake.Core
+open Fake.DotNet
 
 // *** Define Targets ***
 Target.create "Clean" (fun _ ->
-  Trace.log " --- Cleaning the app --- "
+  let setOptions (options: DotNet.Options) = options
+  let processResult = DotNet.exec setOptions "clean" "src/goodnewseveryone.fsproj"
+  if processResult.ExitCode <> 0 then
+    raise (MSBuildException("Clean failed with", processResult.Errors))
 )
 
 Target.create "Build" (fun _ ->
-  Trace.log " --- Building the app --- "
+  let setBuildOptions (buildOptions: DotNet.BuildOptions) = buildOptions
+  DotNet.build setBuildOptions "src/goodnewseveryone.fsproj"
 )
 
-Target.create "Deploy" (fun _ ->
-  Trace.log " --- Deploying app --- "
-)
+// Target.create "Deploy" (fun _ ->
+//   Trace.log " --- Deploying app --- "
+// )
 
 open Fake.Core.TargetOperators
 
 // *** Define Dependencies ***
 "Clean"
   ==> "Build"
-  ==> "Deploy"
+  // ==> "Deploy"
 
 // *** Start Build ***
-Target.runOrDefault "Deploy"
+Target.runOrDefault "Build"
