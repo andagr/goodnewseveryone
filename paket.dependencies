@@ -1,6 +1,7 @@
 storage: none
 source https://api.nuget.org/v3/index.json
 
+nuget FSharp.Core ~> 5.0
 nuget Giraffe
 nuget Microsoft.NET.Test.Sdk
 nuget Microsoft.AspNetCore.TestHost
